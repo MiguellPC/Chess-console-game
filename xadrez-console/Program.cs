@@ -13,22 +13,35 @@ namespace xadrez_console
 
                 while (!partida.terminada)
                 {
-                    Console.Clear();
-                    Tela.imprimirTabuleiro(partida.tabuleiro);
+                    try
+                    {
+                        Console.Clear();
+                        Tela.imprimirTabuleiro(partida.tabuleiro);
 
-                    Console.Write("\nOrigem: ");
-                    Posicao origem = Tela.lerPosicaoXadrez().ToPosicao();
+                        Console.WriteLine("\nTurno: " + partida.turno);
+                        Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
 
-                    bool[,] posicoesPossiveis = partida.tabuleiro.peca(origem).movimentosPossiveis();
+                        Console.Write("\nOrigem: ");
+                        Posicao origem = Tela.lerPosicaoXadrez().ToPosicao();
+                        partida.validarPosicaoOrigem(origem);
 
-                    Console.Clear();
-                    Tela.imprimirTabuleiro(partida.tabuleiro, posicoesPossiveis);
+                        bool[,] posicoesPossiveis = partida.tabuleiro.peca(origem).movimentosPossiveis();
+
+                        Console.Clear();
+                        Tela.imprimirTabuleiro(partida.tabuleiro, posicoesPossiveis);
 
 
-                    Console.Write("\nDestino: ");
-                    Posicao destino = Tela.lerPosicaoXadrez().ToPosicao();
+                        Console.Write("\nDestino: ");
+                        Posicao destino = Tela.lerPosicaoXadrez().ToPosicao();
+                        partida.validarPosicaoDeDestino(origem, destino);
 
-                    partida.executaMovimento(origem, destino);
+                        partida.realizaJogada(origem, destino);
+                    }
+                    catch (TabuleiroException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.ReadKey();
+                    }
                 }
 
             }
