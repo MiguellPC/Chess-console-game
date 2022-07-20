@@ -26,7 +26,7 @@ namespace Pecas_xadrez
             Posicao pos = new Posicao(0, 0);
 
             // NO
-            posicao.definirValores(posicao.linha - 1, posicao.coluna - 1);
+            pos.definirValores(posicao.linha - 1, posicao.coluna - 1);
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
@@ -38,7 +38,7 @@ namespace Pecas_xadrez
             }
 
             // NE
-            posicao.definirValores(posicao.linha - 1, posicao.coluna + 1);
+            pos.definirValores(posicao.linha - 1, posicao.coluna + 1);
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
@@ -50,7 +50,7 @@ namespace Pecas_xadrez
             }
 
             // SE
-            posicao.definirValores(posicao.linha + 1, posicao.coluna + 1);
+            pos.definirValores(posicao.linha + 1, posicao.coluna + 1);
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
@@ -62,7 +62,7 @@ namespace Pecas_xadrez
             }
 
             // SO
-            posicao.definirValores(posicao.linha + 1, posicao.coluna - 1);
+            pos.definirValores(posicao.linha + 1, posicao.coluna - 1);
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;

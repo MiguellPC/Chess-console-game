@@ -35,7 +35,7 @@ namespace xadrez_console
             imprimirConjunto(partida.pecasCapturadas(Cor.Branca));
             Console.Write("\nPretas: ");
             ConsoleColor aux = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             imprimirConjunto(partida.pecasCapturadas(Cor.Preta));
             Console.ForegroundColor = aux;
             Console.WriteLine();
@@ -116,7 +116,7 @@ namespace xadrez_console
                 else
                 {
                     ConsoleColor aux = Console.ForegroundColor;
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.Write(peca);
                     Console.ForegroundColor = aux;
 
