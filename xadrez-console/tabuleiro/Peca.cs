@@ -17,7 +17,12 @@
 
         public void incrementarQteMovimentos()
         {
-            this.qteMovimentos++;
+            qteMovimentos++;
+        }
+        
+        public void decrementarQteMovimentos()
+        {
+            qteMovimentos--;
         }
 
         public bool existeMovimentosPossiveis()
