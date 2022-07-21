@@ -93,7 +93,7 @@ namespace Pecas_xadrez
             // #jogadaespecial roque
             if (qteMovimentos == 0 && !partida.xeque)
             {
-                // jogadaespecial roque pequeno
+                // #jogadaespecial roque pequeno
                 Posicao posT1 = new Posicao(posicao.linha, posicao.coluna + 3);
                 if (testeTorreParaRoque(posT1))
                 {
@@ -105,7 +105,7 @@ namespace Pecas_xadrez
                     }
                 }
                 
-                // jogadaespecial roque grande
+                // #jogadaespecial roque grande
                 Posicao posT2 = new Posicao(posicao.linha, posicao.coluna - 4);
                 if (testeTorreParaRoque(posT2))
                 {
