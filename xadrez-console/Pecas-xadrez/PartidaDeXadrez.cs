@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using tabuleiro;
+﻿using tabuleiro;
 
 namespace Pecas_xadrez
 {
@@ -52,7 +47,7 @@ namespace Pecas_xadrez
                 T.incrementarQteMovimentos();
                 tabuleiro.colocarPeca(T, destinoT);
             }
-            
+
             // #jogadaespecial roque grande
             if (p is Rei && destino.coluna == origem.coluna - 2)
             {
@@ -146,6 +141,21 @@ namespace Pecas_xadrez
                 throw new TabuleiroException("Você não pode se colocar em xeque!");
             }
 
+            Peca p = tabuleiro.peca(destino);
+
+            // #jogadaespecial Promocao
+            if (p is Peao)
+            {
+                if ((p.cor == Cor.Branca && destino.linha == 0) || (p.cor == Cor.Preta && destino.linha == 7))
+                {
+                    p = tabuleiro.retirarPeca(destino);
+                    pecas.Remove(p);
+                    Peca dama = new Dama(tabuleiro, p.cor);
+                    tabuleiro.colocarPeca(dama, destino);
+                    pecas.Add(dama);
+                }
+            }
+
             if (estaEmXeque(adversaria(jogadorAtual)))
             {
                 xeque = true;
@@ -166,9 +176,7 @@ namespace Pecas_xadrez
             }
 
 
-            // #jogadaespecial En Passant
-            Peca p = tabuleiro.peca(destino);
-
+            // #jogadaespecial En Passant            
             if (p is Peao && (destino.linha == origem.linha - 2 || destino.linha == origem.linha + 2))
             {
                 vulneravelEnPassant = p;
